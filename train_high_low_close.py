@@ -21,7 +21,7 @@ def scale_list(numbers):
 df = pd.read_csv('train_data.csv')
 High_low_seq = df["validation"].tolist()
 
-window_size = 1200
+window_size = 540
 stride = 1
 
 inputs_high = []
@@ -146,5 +146,5 @@ checkpoint = ModelCheckpoint('finance.h5', monitor='val_loss', save_best_only=Tr
 early_stopping = EarlyStopping(monitor='val_loss', patience=50, verbose=1)
 
 # Train the model
-model.fit([train_inputs, train_inputs[:, 1199:1200, :]], train_targets, epochs=300, batch_size=128,
-          validation_data=([test_inputs, test_inputs[:, 1199:1200, :]], test_targets), callbacks=[checkpoint, early_stopping])
+model.fit([train_inputs, train_inputs[:, 539:540, :]], train_targets, epochs=300, batch_size=128,
+          validation_data=([test_inputs, test_inputs[:, 539:540, :]], test_targets), callbacks=[checkpoint, early_stopping])
